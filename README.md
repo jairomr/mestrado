@@ -3,3 +3,5 @@
 :diamond_shape_with_a_dot_inside: Scripts e dados referentes ao meu mestrado em Ciências Ambientais (atualizados de acordo com o avanço dos estudos).
 
 :diamond_shape_with_a_dot_inside: Pesquisa feita para avaliar a situação de áreas de restauração declaradas no bioma Cerrado utilizando sensoriamento remoto.
+
+[Resultado para GeoHash 6vqt8g](resultados/6vqt8g.md)
