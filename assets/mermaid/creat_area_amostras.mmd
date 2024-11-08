@@ -1,0 +1,22 @@
+graph TD
+    %% Coluna 1
+    A1([Início]) --> A2[Carregar arquivos .gpkg e .tif]
+
+    A2 --> A3[Padronizar coordenadas e limpar geometrias]
+    A3 --> A4[Definir notas e mapa de remapeamento]
+    A4 --> A5{Loop para cada item com threads}
+    A5 --> A6[Extrair e calcular pesos]
+    A6 --> A5
+    A5 --> A7[Concatenar dados em GeoDataFrame]
+    A7 --> A9[Salvar em arquivo: area_com_peso.gpkg]
+    
+    A9 --> B1{Loop por hash6 únicos}
+    B1 --> B2[Calcular clusters e somas]
+    B2 --> B3[Selecionar amostras com base em pesos]
+    B3 --> B1
+    B1 --> B4[Concatenar amostras aprovadas]
+    B4 --> B5[Salvar em arquivo: amostra_rois_3857.gpkg]
+
+
+    %% Fim
+    B5 --> Fim([Fim])

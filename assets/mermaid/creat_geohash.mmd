@@ -1,0 +1,17 @@
+graph TD
+    Inicio --> Carregar_arquivos[Carregar arquivos .gpkg]
+    Carregar_arquivos --> Loop{Loop pelos arquivos}
+    Loop --> Ler_arquivo[Ler e processar arquivo]
+    Ler_arquivo --> Categorizar[Categorizar e armazenar dados]
+    Categorizar --> Proximo[Próximo arquivo]
+    Proximo --> Loop
+    Loop --> Concatenar[Concatenar dados]
+    Concatenar --> Remover[Remover duplicatas]
+    Remover --> Salvar[Salvar arquivo principal]
+    Salvar --> Loop_precisao{Loop para cada precisão de geohash}
+    Loop_precisao --> Gerar_amostras[Gerar e salvar amostras]
+    Gerar_amostras --> Proxima[Próxima precisão]
+    Proxima --> Loop_precisao
+    Loop_precisao --> Expansao[Expansão do geohash precisão 6]
+    Expansao --> Salvar_expandido[Salvar dados expandidos]
+    Salvar_expandido --> Fim
