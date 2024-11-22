@@ -10,7 +10,8 @@ def add_img(cluster: str):
     return f"""## [Resultado para GeoHash {cluster}](resultados/{cluster}.md) 
 
 <p align="center">
-  <img src="figs/{cluster}_map.png" style="width: 50%" />
+  <img src="figs/{cluster}_map.png" style="width: 40%; display: inline-block;" />
+  <img src="figs/sankey_{cluster}.png" style="width: 50%; display: inline-block;" />
 </p>
 
 """
