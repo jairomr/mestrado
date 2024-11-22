@@ -7,7 +7,7 @@ def add_img(cluster: str):
     """
     Adiciona as imagens ao arquivo index.md
     """
-    return f"""## [Resultado para GeoHash {cluster}](resultados/{cluster}.md) 
+    return f"""## [Resultado para GeoHash {cluster}]({cluster}.md) 
 
 <p align="center">
   <img src="figs/{cluster}_map.png" style="width: 40%; display: inline-block;" />
