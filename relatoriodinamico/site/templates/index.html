@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Relatório de Geometria</title>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Cabeçalho -->
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-blue-800 mb-4">Relatório de Análise Geométrica</h1>
+            <p class="text-gray-600">Análise comparativa de formas, padrões geométricos e uso do solo</p>
+        </header>
+
+        <!-- Seção de Diagramas Principais -->
+        <section class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Referência</h2>
+                    <img src="{{ url_for('static', filename='figs/' + '%04d' % project_id + '_referencia.png') }}" alt="Diagrama de referência geométrica"
+                         class="rounded-lg w-full h-auto object-cover">
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Classificação Uso de Solo 2023</h2>
+                    <img src="{{ url_for('static', filename='figs/' + '%04d' % project_id + '_class.png') }}" alt="Classificação de formas geométricas"
+                         class="rounded-lg w-full h-auto object-cover">
+                </div>
+            </div>
+
+            <!-- Combined Plot and Data Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="{{ url_for('static', filename='figs/' + '%04d' % project_id + '_class_plot.png') }}" alt="Gráfico de classificação geométrica"
+                         class="rounded-lg mb-4 w-full h-auto object-cover">
+                    <p class="text-gray-700">Classes de uso do solo em porcentagem para gemetria</p>
+                </div>
+                <!-- Data Section (Moved Here) -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Dados do Projeto</h2>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div>
+                            <p><strong>Categoria:</strong> {{ dados.Categoria }}</p>
+                            <p><strong>Fonte:</strong> {{ dados.Fonte }}</p>
+                            <p><strong>Projeto:</strong> {{ dados.Projeto }}</p>
+                            <p><strong>Nome do Projeto:</strong> {{ dados.NmProjeto }}</p>
+                            <p><strong>Instituição Executora:</strong> {{ dados.InstExecu }}</p>
+                            <p><strong>Instituição Gestora:</strong> {{ dados.InstGest }}</p>
+                            <p><strong>Instituição Financiadora:</strong> {{ dados.InstFinan }}</p>
+                        </div>
+                        <div>
+                            <p><strong>Método Principal:</strong> {{ dados.MetPrinc }}</p>
+                            <p><strong>Método Combinado:</strong> {{ dados.MetComb }}</p>
+                            <p><strong>Motivação:</strong> {{ dados.Motivacao }}</p>
+                            <p><strong>Tipo de Área:</strong> {{ dados.TipoArea }}</p>
+                            <p><strong>Data de Início:</strong> {{ dados.DataInici }}</p>
+                            <p><strong>Projeto Ativo:</strong> {{ dados.ProjAtivo }}</p>
+                            <p><strong>Data de Conclusão:</strong> {{ dados.DataConcl }}</p>
+                        </div>
+                        <div>
+                            <p><strong>Link:</strong>
+                                {% if dados.Link %}
+                                <a href="{{ dados.Link }}" target="_blank" class="text-blue-600 hover:underline">Link</a>
+                                {% else %}
+                                N/A
+                                {% endif %}
+                            </p>
+                            <p><strong>Área (Ha):</strong> {{ dados.AreaHa }}</p>
+                            <p><strong>Monitoramento:</strong> {{ dados.Monitora }}</p>
+                            <p><strong>Privacidade:</strong> {{ dados.Privacidad }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Seção de Mapas -->
+        <section class="mb-16">
+
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-8 text-center">Planet</h2>
+                    <img src="{{ url_for('static', filename='figs/' + '%04d' % project_id + '_planet.png') }}" alt="Mapa planetário"
+                         class="rounded-lg w-full h-auto object-cover">
+                </div>
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-8 text-center">MapBiomas</h2>
+                    <img src="{{ url_for('static', filename='figs/' + '%04d' % project_id + '_mapbiomas.png') }}" alt="Mapa biomas"
+                         class="rounded-lg w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do Gráfico -->
+        <section class="mb-16">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">MapBiomas Historico de Uso</h2>
+                <img src="{{ url_for('static', filename='figs/' + '%04d' % project_id + '_barplot.png') }}" alt="Gráfico de barras estatístico"
+                     class="rounded-lg w-full md:w-3/4 mx-auto h-auto object-cover">
+            </div>
+        </section>
+    </div>
+</body>
+</html>
